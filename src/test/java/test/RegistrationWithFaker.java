@@ -21,7 +21,7 @@ public class RegistrationWithFaker extends TestBase {
 
     @Test
     void successfulRegistrationTest() {
-        Faker faker = new Faker(new Locale("ru"));
+        Faker faker = new Faker(new Locale(""));
 
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
