@@ -13,6 +13,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static utils.RandomUtils.getRandomEmail;
 import static utils.RandomUtils.getRandomString;
+import static utils.RandomUtils.*;
 
 
 
@@ -21,14 +22,32 @@ public class RegistrationWithFaker extends TestBase {
 
     @Test
     void successfulRegistrationTest() {
-        Faker faker = new Faker(new Locale(""));
+        Faker faker = new Faker(new Locale("de"));
 
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
         String userEmail = faker.internet().emailAddress();
 
-//        String streetAddress = faker.address().streetAddress();
-        String streetAddress = faker.twinPeaks().quote();
+        String streetAddress = faker.address().streetAddress();
+//        String streetAddress = faker.twinPeaks().quote();
+        String dayBirth = String.valueOf(faker.number().numberBetween(1, 30));
+        String monthBirth = monthRandom();
+        String yearBirth = String.valueOf(faker.number().numberBetween(1990, 2015));
+        String city = randomUtils.cityRandom();
+        String state = randomUtils.getStateByCity(city);
+        String hobbie = hobbieRandom();
+
+
+    @Test
+    void successfulCheckRegistration() {
+            verifyResultsModalAppears().
+                    verifyResult("Student Name", firstName + " " + lastName).
+                    verifyResult("Student Email", email).
+                    verifyResult("Gender", gender).
+                    verifyResult("Address", adress).
+                    verifyResult("State and City", state + " " + city).
+                    clickClose();
+        }
 
 
         open("/automation-practice-form");

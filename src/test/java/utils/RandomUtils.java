@@ -5,6 +5,8 @@ import com.github.javafaker.Faker;
 import java.security.SecureRandom;
 import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
+import java.util.HashMap;
 
 
 public class RandomUtils {
@@ -16,6 +18,30 @@ public class RandomUtils {
         System.out.println(getRandomInt(111, 99999999));
         System.out.println(getRandomPhone());
         System.out.println(getRandomGender());
+
+    }
+
+    public static String getStateByCity(String value) {
+        HashMap<String, String> cityAndState = new HashMap<>();
+        cityAndState.put("Washington", "Columbia");
+        cityAndState.put("Philadelphia", "Pennsylvania");
+        cityAndState.put("New-York", "New-York");
+        cityAndState.put("LA", "California");
+        cityAndState.put("Long Beach", "California");
+        cityAndState.put("Tucson", "Arizona");
+        cityAndState.put("Las Vegas", "Nevada");
+        cityAndState.put("Phoenix", "Arizona");
+        return cityAndState.get(value);
+    }
+    public static String monthRandom() {
+        String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        int i = random.nextInt(month.length);
+        return month[i];
+    }
+    public static String hobbieRandom() {
+        String[] hobbie = {"Sports", "Reading", "Music"};
+        int i = random.nextInt(hobbie.length);
+        return hobbie[i];
     }
 
     public static String getRandomString(int len) {
