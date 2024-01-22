@@ -35,7 +35,7 @@ public class RegistrationWithFaker extends TestBase {
         String yearBirth = String.valueOf(faker.number().numberBetween(1990, 2015));
         String city = randomUtils.cityRandom();
         String state = randomUtils.getStateByCity(city);
-        String hobbie = hobbieRandom();
+        String hobbies = hobbiesRandom();
 
 
     @Test
